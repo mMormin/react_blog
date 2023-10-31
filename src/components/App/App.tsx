@@ -8,13 +8,10 @@ import categoriesData from '../../data/categories';
 import postsData from '../../data/posts';
 
 function App() {
-  console.log(categoriesData);
-  console.log(postsData);
-
   return (
     <div className="app">
-      <Header />
-      <Posts />
+      <Header categories={categoriesData} />
+      <Posts posts={postsData} />
       <Footer />
     </div>
   );

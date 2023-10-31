@@ -1,18 +1,19 @@
-import Post from '../Post/Post';
-
+import OnePost from '../OnePost/OnePost';
+import { Post } from '../../@types/post';
 import './Posts.scss';
 
-function Posts() {
+type PostsProps = {
+  posts: Post[];
+};
+
+function Posts({ posts }: PostsProps) {
   return (
     <main className="posts">
       <h1 className="posts-title">Dev Of Thrones</h1>
       <div className="posts-list">
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {posts.map((post) => (
+          <OnePost key={post.id} post={post} />
+        ))}
       </div>
     </main>
   );
