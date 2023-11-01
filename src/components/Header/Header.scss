@@ -49,3 +49,13 @@
     }
   }
 }
+
+.zen-mode {
+  .menu-link {
+    color: white;
+
+    &:hover {
+      color: #e52354;
+    }
+  }
+}
