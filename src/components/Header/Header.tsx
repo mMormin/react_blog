@@ -1,24 +1,17 @@
-import { useState } from 'react';
 import { Category } from '../../@types/category';
 import './Header.scss';
 
+type SetterState<T> = React.Dispatch<React.SetStateAction<T>>;
+
 type HeaderProps = {
   categories: Category[];
-
-  setZenMode: (newValue: number) => void;
+  zenMode: boolean;
+  setZenMode: SetterState<boolean>;
 };
 
-function Header({ categories, setZenMode }: HeaderProps) {
-  const [zenMode, setZenModeState] = useState(0);
-
+function Header({ categories, zenMode, setZenMode }: HeaderProps) {
   const handleClickZenMode = () => {
-    if (zenMode === 0) {
-      setZenMode(1);
-      setZenModeState(1);
-    } else {
-      setZenMode(0);
-      setZenModeState(0);
-    }
+    setZenMode((oldZenModeValue) => !oldZenModeValue);
   };
 
   return (
@@ -29,13 +22,17 @@ function Header({ categories, setZenMode }: HeaderProps) {
         </a>
 
         {categories.map((category) => (
-          <a className="menu-link" key={category.id} href={`#${category.slug}`}>
+          <a
+            className="menu-link"
+            key={category.id}
+            href={`/category/${category.slug}`}
+          >
             {category.name}
           </a>
         ))}
 
         <button className="menu-btn" type="button" onClick={handleClickZenMode}>
-          Activer le mode zen
+          {zenMode ? 'Désactiver' : 'Activer'} le mode zen
         </button>
       </nav>
     </header>

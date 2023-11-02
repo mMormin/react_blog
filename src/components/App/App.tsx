@@ -5,16 +5,32 @@ import Posts from '../Posts/Posts';
 
 import './App.scss';
 
-import categoriesData from '../../data/categories';
-import postsData from '../../data/posts';
+// import categoriesData from '../../data/categories';
+// import postsData from '../../data/posts';
+import Spinner from '../Spinner/Spinner';
+import { Post } from '../../@types/post';
+import { Category } from '../../@types/category';
+import { useAsyncFetch } from '../../hooks/useAsyncFetch';
 
 function App() {
-  const [zenMode, setZenMode] = useState(0);
+  const [zenMode, setZenMode] = useState(false);
+  const { data: posts, isLoading } = useAsyncFetch<Post[]>(
+    'https://oblog-react.vercel.app/api/posts'
+  );
+
+  const { data: categories } = useAsyncFetch<Category[]>(
+    'https://oblog-react.vercel.app/api/categories'
+  );
 
   return (
-    <div className={`app ${zenMode === 1 ? 'zen-mode' : ''}`}>
-      <Header categories={categoriesData} setZenMode={setZenMode} />
-      <Posts posts={postsData} setZenMode={zenMode} />
+    <div className={`app ${zenMode ? 'zen-mode' : ''}`}>
+      <Header
+        categories={categories || []}
+        zenMode={zenMode}
+        setZenMode={setZenMode}
+      />
+      {isLoading && <Spinner />}
+      <Posts posts={posts || []} setZenMode={zenMode} />
       <Footer />
     </div>
   );

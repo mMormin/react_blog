@@ -1,11 +1,10 @@
 import OnePost from '../OnePost/OnePost';
-import { Post } from '../../@types/post';
+import { Post as TPost } from '../../@types/post';
 import './Posts.scss';
 
 type PostsProps = {
-  posts: Post[];
-
-  setZenMode: number;
+  posts: TPost[];
+  setZenMode: boolean;
 };
 
 function Posts({ posts, setZenMode }: PostsProps) {
