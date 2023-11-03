@@ -3,6 +3,7 @@
 .post {
   padding: v.$gutter;
   width: 100%;
+  cursor: pointer;
 
   @media (min-width: 600px) {
     width: 50%;
@@ -38,10 +39,17 @@
   }
 }
 
-.full-width {
-  margin-bottom: 2rem;
+.zen-mode {
+  .post {
+    width: 100%;
 
-  .post-excerpt {
-    color: white;
+    &:hover {
+      background-color: #e5235430;
+    }
+
+    .post-excerpt,
+    .post-title {
+      color: white;
+    }
   }
 }

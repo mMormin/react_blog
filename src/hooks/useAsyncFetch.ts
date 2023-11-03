@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 export const useAsyncFetch = <TData>(url: string) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<TData>();
+  const [error, setError] = useState<Error>();
 
   useEffect(() => {
     setIsLoading(true);
@@ -13,10 +14,13 @@ export const useAsyncFetch = <TData>(url: string) => {
       .then((response) => {
         setData(response.data);
       })
+      .catch((err) => {
+        setError(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
   }, [url]);
 
-  return { isLoading, data };
+  return { isLoading, data, error };
 };

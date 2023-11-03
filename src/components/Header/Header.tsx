@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { Category } from '../../@types/category';
 import './Header.scss';
 
@@ -17,18 +18,25 @@ function Header({ categories, zenMode, setZenMode }: HeaderProps) {
   return (
     <header className="menu" id="header">
       <nav className="menu-nav">
-        <a className="menu-link menu-link--selected" href="#header">
+        <NavLink
+          className={({ isActive }) =>
+            `menu-link ${isActive ? 'menu-link--selected' : ''}`
+          }
+          to="/"
+        >
           Accueil
-        </a>
+        </NavLink>
 
         {categories.map((category) => (
-          <a
-            className="menu-link"
+          <NavLink
+            className={({ isActive }) =>
+              `menu-link ${isActive ? 'menu-link--selected' : ''}`
+            }
+            to={`/category/${category.slug}`}
             key={category.id}
-            href={`/category/${category.slug}`}
           >
             {category.name}
-          </a>
+          </NavLink>
         ))}
 
         <button className="menu-btn" type="button" onClick={handleClickZenMode}>
