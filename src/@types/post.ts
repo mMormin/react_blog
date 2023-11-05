@@ -5,9 +5,4 @@ export type Post = {
   title: string;
   excerpt: string;
   content: string;
-  category: {
-    id: number;
-    slug: string;
-    name: string;
-  };
 };

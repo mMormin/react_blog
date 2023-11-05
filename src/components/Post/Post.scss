@@ -9,6 +9,10 @@
     width: 50%;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   &:hover {
     background-color: v.$color-alt;
   }

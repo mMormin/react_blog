@@ -1,4 +1,4 @@
-import OnePost from '../OnePost/OnePost';
+import Post from '../Post/Post';
 import { Post as TPost } from '../../@types/post';
 import './Posts.scss';
 
@@ -12,7 +12,7 @@ function Posts({ posts }: PostsProps) {
       <h1 className="posts-title">Dev Of Thrones</h1>
       <div className="posts-list">
         {posts.map((post) => (
-          <OnePost key={post.id} post={post} />
+          <Post key={post.id} post={post} />
         ))}
       </div>
     </main>

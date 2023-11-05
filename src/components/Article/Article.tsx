@@ -1,19 +1,18 @@
 import DOMPurify from 'dompurify';
 import { Post as TPost } from '../../@types/post';
-import './OnePost.scss';
+import './Article.scss';
 
-type OnePostProps = {
+type ArticleProps = {
   post: TPost;
 };
 
-function OnePost({ post }: OnePostProps) {
+function Article({ post }: ArticleProps) {
   const pure = DOMPurify.sanitize(post.excerpt);
   return (
-    <article className="post">
-      <h2 className="post-title">{post.title}</h2>
-      <div className="post-category">{post.category.slug}</div>
+    <article className="article">
+      <h2 className="article-title">{post.title}</h2>
       <p
-        className="post-excerpt"
+        className="article-excerpt"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: pure }}
       />
@@ -21,4 +20,4 @@ function OnePost({ post }: OnePostProps) {
   );
 }
 
-export default OnePost;
+export default Article;
