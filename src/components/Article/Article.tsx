@@ -1,9 +1,9 @@
 import DOMPurify from 'dompurify';
-import { Post as TPost } from '../../@types/post';
+import { PostWithoutCategory } from '../../@types/post';
 import './Article.scss';
 
 type ArticleProps = {
-  post: TPost;
+  post: PostWithoutCategory;
 };
 
 function Article({ post }: ArticleProps) {

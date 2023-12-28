@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Root from './routes/Root/Root';
 import Home from './routes/Home/Home';
 import Category from './routes/Category/Category';
-import OnePost from './routes/OnePost/OnePost';
+import Article from './routes/Article/Article';
 import NotFound from './components/NotFound/NotFound';
 
 export const router = createBrowserRouter([
@@ -23,7 +23,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/article/:id',
-        element: <OnePost />,
+        element: <Article />,
+      },
+      {
+        path: '/article/:slug',
+        element: <Article />,
       },
     ],
   },
